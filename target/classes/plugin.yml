@@ -1,0 +1,3 @@
+main: io.github.notaeris.moon.MoonPlugin
+name: Moon
+version: 1.0-SNAPSHOT

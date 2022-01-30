@@ -1,0 +1,28 @@
+command:
+  rank:
+    help:
+      - "&7&m--------------------------------------"
+      - "&c&lRank Commands"
+      - ""
+      - "&c/rank create <name>"
+      - "&c/rank delete <name>"
+      - "&c/rank setdisplayname <rank> <displayname>"
+      - "&c/rank setprefix <rank> <prefix>"
+      - "&c/rank setcolor <rank> <color>"
+      - "&c/rank setweight <rank> <weight>"
+      - "&7&m--------------------------------------"
+    already_exists: "&cThis rank already exists."
+    doesnt_exist: "&cThis rank doesn't exist."
+    create: "&c&lCOKE &f%right_arrow% &eYou have &acreated &erank &f%rank%"
+    delete: "&c&lCOKE &f%right_arrow% &eYou have &cdeleted &erank &f%displayname%"
+    setdisplayname: "&c&lCOKE &f%right_arrow% &eYou have &aupdated &ethe display name of rank &f%rank% &eto &f%displayname%"
+    setprefix: "&c&lCOKE &f%right_arrow% &eYou have &aset &ethe prefix of rank &f%displayname% &eto &f%prefix%"
+    setcolor: "&c&lCOKE &f%right_arrow% &eYou have &aupdated &ethe color of rank &f%displayname% &eto &f%color%"
+    setweight: "&c&lCOKE &f%right_arrow% &eYou have &aupdated &ethe weight of rank &f%displayname% &eto &f%weight%"
+    info:
+      - "&7&m--------------------------------------"
+      - "&cPrefix &f%right_arrow% %prefix%"
+      - "&cColor &f%right_arrow% %color%"
+      - "&cWeight &f%right_arrow% %weight%"
+      - "&7&m--------------------------------------"
+  grant: "&c&lCOKE &f%right_arrow% &eYou have &agranted &ethe rank &f%rank% &eto &f%profile%"

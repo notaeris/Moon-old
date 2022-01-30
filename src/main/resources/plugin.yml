@@ -1,0 +1,3 @@
+main: ${pom.groupId}.MoonPlugin
+name: ${pom.artifactId}
+version: ${pom.version}
