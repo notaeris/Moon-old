@@ -96,6 +96,12 @@
             <artifactId>CommandAPI</artifactId>
             <version>c3f21168be</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.NoSequel</groupId>
+            <artifactId>MenuAPI</artifactId>
+            <version>f157aa11a0</version>
+        </dependency>
     </dependencies>
 
 </project>
