@@ -1,4 +1,5 @@
 command:
+  moon: "&eThis server is &arunning &9&l%name% &f%version%&9."
   rank:
     help:
       - "&7&m-------------------------------------------------"
