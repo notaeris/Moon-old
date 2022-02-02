@@ -5,6 +5,8 @@ import io.github.nosequel.menu.pagination.PaginatedMenu;
 import io.github.notaeris.moon.rank.Rank;
 import io.github.notaeris.moon.util.CC;
 import io.github.notaeris.moon.util.ItemBuilder;
+import org.apache.commons.lang.StringUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -35,12 +37,15 @@ public class RanksMenu extends PaginatedMenu {
 
     private String[] getLore(Rank rank) {
         return new String[] {
-                CC.translate("&f✪ Weight &f" + rank.getColor() + rank.getWeight()),
-                CC.translate("&f✪ Color &f" + rank.getColor() + rank.getColor().name().toUpperCase()),
-                CC.translate("&f✪ Prefix &f" + rank.getPrefix()),
+                ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + StringUtils.repeat("-", 25),
+                CC.translate("&f✪ Date Created &90"),
+                CC.translate("&f✪ Weight &9" + rank.getWeight()),
                 "",
-                CC.translate("&f✪ Example Prefix"),
-                CC.translate("&f    " + rank.getPrefix() + this.getPlayer().getName())
+                CC.translate("   &9Display Information"),
+                CC.translate("&f✪ Color " + rank.getColor() + rank.getColor().name().toUpperCase()),
+                CC.translate("&f✪ Prefix " + rank.getPrefix()),
+                CC.translate("&f✪ Display " + rank.getPrefix() + this.getPlayer().getName()),
+                ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + StringUtils.repeat("-", 25)
         };
     }
 }
