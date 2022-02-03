@@ -12,6 +12,8 @@ command:
       - "&f%right_arrow% &9/rank prefix <rank> <prefix> &7- &fSet the prefix of a rank"
       - "&f%right_arrow% &9/rank color <rank> <color> &7- &fSet the color of a rank"
       - "&f%right_arrow% &9/rank weight <rank> <weight> &7- &fSet the weight of a rank"
+      - "&f%right_arrow% &9/rank addpermission <rank> <permission> &7- &fAdd a permission to a rank"
+      - "&f%right_arrow% &9/rank removepermission <rank> <permission> &7- &fRemove a permission from a rank"
       - "&7&m-------------------------------------------------"
     already_exists: "&cThis rank already exists."
     doesnt_exist: "&cSorry but we couldn't find the rank you were looking for."
@@ -26,3 +28,6 @@ command:
       - "&cColor &f%right_arrow% %color%"
       - "&cWeight &f%right_arrow% %weight%"
     grant: "&9&lMOON &f%right_arrow% &eYou have &agranted &ethe rank &f%rank% &eto &f%profile%"
+    permission:
+      add: "&9&lMOON &f%right_arrow% &eYou have &aadded &ethe permission &f%permission% &eto rank &f%rank%"
+      remove: "&9&lMOON &f%right_arrow% &eYou have &cremoved &ethe permission &f%permission% &eto rank &f%rank%"

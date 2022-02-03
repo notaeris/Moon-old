@@ -121,4 +121,36 @@ public class RankCommands {
                     .replace("%weight%", Integer.toString(rank.getWeight())));
         }
     }
+
+    @Subcommand(parentLabel = "rank", label = "addpermission", permission = "moon.command.rank")
+    public void addPermission(BukkitCommandExecutor player, String rankName, String permission) {
+        Rank rank = this.rankElement.findRank(rankName);
+
+        if (rank == null) {
+            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.doesnt_exist")));
+        } else {
+            rank.addPermission(permission);
+
+            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.permission.add"))
+                    .replace("%right_arrow%", this.right_arrow)
+                    .replace("%permission%", permission)
+                    .replace("%rank%", CC.translate(rank.getDisplayname())));
+        }
+    }
+
+    @Subcommand(parentLabel = "rank", label = "removepermission", permission = "moon.command.rank")
+    public void removePermission(BukkitCommandExecutor player, String rankName, String permission) {
+        Rank rank = this.rankElement.findRank(rankName);
+
+        if (rank == null) {
+            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.doesnt_exist")));
+        } else {
+            rank.removePermission(permission);
+
+            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.permission.remove"))
+                    .replace("%right_arrow%", this.right_arrow)
+                    .replace("%permission%", permission)
+                    .replace("%rank%", CC.translate(rank.getDisplayname())));
+        }
+    }
 }

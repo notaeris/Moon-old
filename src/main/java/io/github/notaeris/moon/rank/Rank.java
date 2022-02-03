@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.ChatColor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Getter
 @Setter
@@ -18,6 +16,8 @@ public class Rank {
     private int weight;
 
     @Getter private static final List<Rank> ranks = new ArrayList<>();
+
+    private final Set<String> permissions = new HashSet<>();
 
     /**
      * Constructor for creating a {@link Rank}
@@ -42,5 +42,23 @@ public class Rank {
      */
     public void delete(Rank rank) {
         ranks.remove(rank);
+    }
+
+    /**
+     * Add a permission to a {@link Rank}
+     *
+     * @param permission the permission to add
+     */
+    public void addPermission(String permission) {
+        this.permissions.add(permission);
+    }
+
+    /**
+     * Remove a permission from a {@link Rank}
+     *
+     * @param permission the permission to remove
+     */
+    public void removePermission(String permission) {
+        this.permissions.remove(permission);
     }
 }

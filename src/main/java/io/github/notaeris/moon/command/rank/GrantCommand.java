@@ -21,7 +21,7 @@ public class GrantCommand {
     private final ProfileElement profileElement = this.plugin.getMoonBootstrap().getElementHandler()
             .findElement(ProfileElement.class);
 
-    @Command(label = "grant", permission = "coke.command.grant")
+    @Command(label = "grant", permission = "coke.command.grant", userOnly = true)
     public void grant(BukkitCommandExecutor player, Player target, String name) {
         Rank rank = this.rankElement.findRank(name);
         Profile targetProfile = this.profileElement.findProfile(target.getUniqueId());
@@ -30,11 +30,11 @@ public class GrantCommand {
             player.getPlayer().sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.doesnt_exist")));
             return;
         }
+        targetProfile.addGrant(new Grant(targetProfile, rank));
 
-        this.profileElement.findProfile(player.getPlayer().getUniqueId()).addGrant(new Grant(targetProfile, rank));
         player.getPlayer().sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.grant"))
                 .replace("%right_arrow%", "➤")
-                .replace("%rank%", CC.translate(this.profileElement.findProfile(player.getPlayer().getUniqueId()).getGrant().getDisplayname()))
+                .replace("%rank%", CC.translate(rank.getDisplayname()))
                 .replace("%profile%", this.profileElement.findProfile(player.getPlayer().getUniqueId()).getGrant().getColor() + player.getPlayer().getName()));
     }
 }

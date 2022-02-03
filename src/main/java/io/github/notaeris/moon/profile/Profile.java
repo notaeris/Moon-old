@@ -1,6 +1,8 @@
 package io.github.notaeris.moon.profile;
 
+import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.rank.Rank;
+import io.github.notaeris.moon.rank.RankElement;
 import io.github.notaeris.moon.rank.grant.Grant;
 import lombok.Getter;
 
@@ -14,6 +16,10 @@ public class Profile {
     @Getter private static final Map<UUID, Profile> profileMap = new HashMap<>();
     private final List<Grant> grants = new ArrayList<>();
 
+    private final RankElement rankElement = MoonPlugin.getPlugin(MoonPlugin.class)
+            .getMoonBootstrap().getElementHandler()
+            .findElement(RankElement.class);
+
     /**
      * Constructor for creating a {@link Profile}
      *
@@ -23,23 +29,26 @@ public class Profile {
         this.uuid = uuid;
 
         profileMap.put(uuid, this);
+        this.rankElement.getDefaultRank(this);
     }
 
     /**
-     * Add a grant
+     * Add a {@link Grant} to a {@link Profile} and sort them by weight
      *
-     * @param grant the grant {@link Grant}
+     * @param grant the grant to add
      */
     public void addGrant(Grant grant) {
-        grants.add(grant);
+       this.grants.add(grant);
+       this.grants.sort(Comparator.comparing(grant1 -> grant1.getRank().getWeight()));
+       Collections.reverse(this.grants);
     }
 
     /**
-     * Get a grant from a player
+     * Get a {@link Grant} from a {@link Profile}
      *
      * @return the grant found
      */
     public Rank getGrant() {
-        return grants.get(0).getRank();
+        return this.grants.get(0).getRank();
     }
 }
