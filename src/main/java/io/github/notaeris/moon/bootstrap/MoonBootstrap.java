@@ -2,7 +2,7 @@ package io.github.notaeris.moon.bootstrap;
 
 import io.github.nosequel.command.bukkit.BukkitCommandHandler;
 import io.github.notaeris.moon.command.MoonCommand;
-import io.github.notaeris.moon.command.rank.GrantCommand;
+import io.github.notaeris.moon.command.rank.GrantCommands;
 import io.github.notaeris.moon.command.rank.RankCommands;
 import io.github.notaeris.moon.element.ElementHandler;
 import io.github.notaeris.moon.profile.ProfileElement;
@@ -39,7 +39,7 @@ public class MoonBootstrap {
         this.elementHandler.initialiseCommands(new BukkitCommandHandler("moon"),
                 new MoonCommand(),
                 new RankCommands(),
-                new GrantCommand()
+                new GrantCommands()
         );
     }
 }

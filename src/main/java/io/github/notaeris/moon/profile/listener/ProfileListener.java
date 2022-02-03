@@ -21,6 +21,7 @@ public class ProfileListener implements Listener {
             .getMoonBootstrap().getElementHandler()
             .findElement(ProfileElement.class);
 
+    @Deprecated
     @EventHandler
     public void onPreJoin(PlayerPreLoginEvent event) {
         Profile.getProfileMap().computeIfAbsent(event.getUniqueId(), Profile::new);

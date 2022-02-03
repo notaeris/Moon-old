@@ -14,6 +14,7 @@ public class Rank {
     private String name, displayname, prefix;
     private ChatColor color;
     private int weight;
+    private final long creationDate;
 
     @Getter private static final List<Rank> ranks = new ArrayList<>();
 
@@ -24,13 +25,14 @@ public class Rank {
      *
      * @param name the rank name
      */
-    public Rank(String name) {
+    public Rank(String name, long creationDate) {
         this.uuid = UUID.randomUUID();
         this.name = name;
         this.displayname = name;
         this.prefix = "";
         this.color = ChatColor.WHITE;
         this.weight = 0;
+        this.creationDate = creationDate;
 
         ranks.add(this);
     }

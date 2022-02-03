@@ -34,7 +34,7 @@ public class RankCommands {
         } else {
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.create"))
                     .replace("%right_arrow%", this.right_arrow)
-                    .replace("%rank%", new Rank(name).getName()));
+                    .replace("%rank%", new Rank(name, System.currentTimeMillis()).getName()));
         }
     }
 

@@ -5,6 +5,8 @@ import io.github.notaeris.moon.rank.Rank;
 import io.github.notaeris.moon.rank.RankElement;
 import io.github.notaeris.moon.rank.grant.Grant;
 import lombok.Getter;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.util.*;
 
@@ -14,11 +16,14 @@ public class Profile {
     private final UUID uuid;
 
     @Getter private static final Map<UUID, Profile> profileMap = new HashMap<>();
-    private final List<Grant> grants = new ArrayList<>();
 
     private final RankElement rankElement = MoonPlugin.getPlugin(MoonPlugin.class)
             .getMoonBootstrap().getElementHandler()
             .findElement(RankElement.class);
+
+    private final List<Grant> grants = new ArrayList<>();
+
+
 
     /**
      * Constructor for creating a {@link Profile}
@@ -50,5 +55,9 @@ public class Profile {
      */
     public Rank getGrant() {
         return this.grants.get(0).getRank();
+    }
+
+    public Player getPlayer() {
+        return Bukkit.getPlayer(this.uuid);
     }
 }

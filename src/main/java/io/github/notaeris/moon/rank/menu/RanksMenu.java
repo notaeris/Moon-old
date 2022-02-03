@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class RanksMenu extends PaginatedMenu {
@@ -36,15 +37,17 @@ public class RanksMenu extends PaginatedMenu {
     }
 
     private String[] getLore(Rank rank) {
+        String prefix = rank.getPrefix() == null ? "None" : rank.getPrefix();
+
         return new String[] {
                 ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + StringUtils.repeat("-", 25),
-                CC.translate("&f✪ Date Created &90"),
-                CC.translate("&f✪ Weight &9" + rank.getWeight()),
+                CC.translate("&a+ " + new Date(rank.getCreationDate())),
                 "",
-                CC.translate("   &9Display Information"),
-                CC.translate("&f✪ Color " + rank.getColor() + rank.getColor().name().toUpperCase()),
-                CC.translate("&f✪ Prefix " + rank.getPrefix()),
-                CC.translate("&f✪ Display " + rank.getPrefix() + this.getPlayer().getName()),
+                CC.translate("&f✪ &eWeight&7: &f" + rank.getWeight()),
+                CC.translate("&f✪ &eColor&7: &f" + rank.getColor() + rank.getColor().name().toUpperCase()),
+                CC.translate("&f✪ &ePrefix&7: &f" + prefix),
+                "",
+                CC.translate("&f✪ &eDisplay&7: &f" + rank.getPrefix() + this.getPlayer().getName()),
                 ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + StringUtils.repeat("-", 25)
         };
     }
