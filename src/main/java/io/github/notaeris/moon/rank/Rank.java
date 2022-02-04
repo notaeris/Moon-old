@@ -10,10 +10,11 @@ import java.util.*;
 @Setter
 public class Rank {
 
-    private final UUID uuid;
-    private String name, displayname, prefix;
-    private ChatColor color;
-    private int weight;
+    private final UUID uuid = UUID.randomUUID();
+    private String name, displayName;
+    private String prefix = "";
+    private ChatColor color = ChatColor.WHITE;
+    private int weight = 0;
     private final long creationDate;
 
     @Getter private static final List<Rank> ranks = new ArrayList<>();
@@ -26,15 +27,20 @@ public class Rank {
      * @param name the rank name
      */
     public Rank(String name, long creationDate) {
-        this.uuid = UUID.randomUUID();
         this.name = name;
-        this.displayname = name;
-        this.prefix = "";
-        this.color = ChatColor.WHITE;
-        this.weight = 0;
+        this.displayName = name;
         this.creationDate = creationDate;
 
         ranks.add(this);
+    }
+
+    /**
+     * Sort the {@link Rank}s by weight
+     *
+     * @param rankComparator the rankComparator
+     */
+    public void sort(Comparator<Rank> rankComparator) {
+        ranks.sort(rankComparator);
     }
 
     /**

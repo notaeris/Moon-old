@@ -37,7 +37,7 @@ public class GrantCommands {
 
         player.getPlayer().sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.grant"))
                 .replace("%right_arrow%", "✪")
-                .replace("%rank%", CC.translate(rank.getDisplayname()))
+                .replace("%rank%", CC.translate(rank.getDisplayName()))
                 .replace("%profile%", this.profileElement.findProfile(player.getPlayer().getUniqueId()).getGrant().getColor() + player.getPlayer().getName()));
     }
 

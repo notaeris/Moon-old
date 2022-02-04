@@ -51,7 +51,7 @@ public class GrantsMenu extends PaginatedMenu {
                 CC.translate("&a+ " + new Date(grant.getStartDate())),
                 "",
                 CC.translate("&eTarget&7: &f" + grant.getTarget().getGrant().getColor() + grant.getTarget().getPlayer().getName()),
-                CC.translate("&eRank&7: &f" + grant.getRank().getDisplayname()),
+                CC.translate("&eRank&7: &f" + grant.getRank().getDisplayName()),
                 "",
                 CC.translate("&eIssued By&7: &f" + grant.getExecutor()),
                 CC.translate("&eIssued Reason&7: &f" + grant.getReason())

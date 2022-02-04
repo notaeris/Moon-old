@@ -23,20 +23,10 @@ public class RanksMenu extends PaginatedMenu {
             Rank rank = Rank.getRanks().get(i);
 
             this.buttons[i] = new Button(Material.INK_SACK)
-                    .setDisplayName(CC.translate(rank.getDisplayname()))
+                    .setDisplayName(CC.translate(rank.getDisplayName()))
                     .setLore(this.getLore(rank))
                     .setData(CC.getColor(rank.getColor()))
                     .setClickAction(event -> event.setCancelled(true));
-
-            /**
-            Rank.getRanks().stream()
-                    .sorted(Comparator.comparing(Rank::getWeight).reversed())
-                    .map(rank -> new ItemBuilder(Material.INK_SACK)
-                            .setName(CC.translate(rank.getDisplayname()))
-                            .setLore(Arrays.asList(this.getLore(rank)))
-                            .create())
-                    .forEach(itemStack -> this.buttons[index.getAndIncrement()] = new Button(itemStack));
-             **/
         }
     }
 

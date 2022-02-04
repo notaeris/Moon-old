@@ -10,6 +10,8 @@ import io.github.notaeris.moon.rank.menu.RanksMenu;
 import io.github.notaeris.moon.util.CC;
 import org.bukkit.ChatColor;
 
+import java.util.Comparator;
+
 public class RankCommands {
 
     private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
@@ -47,7 +49,7 @@ public class RankCommands {
         } else {
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.delete"))
                     .replace("%right_arrow%", this.right_arrow)
-                    .replace("%displayName%", rank.getDisplayname()));
+                    .replace("%displayName%", rank.getDisplayName()));
 
             rank.delete(rank);
         }
@@ -65,12 +67,12 @@ public class RankCommands {
         if (rank == null) {
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.doesnt_exist")));
         } else {
-            rank.setDisplayname(displayName);
+            rank.setDisplayName(displayName);
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.displayName"))
                     .replace("%right_arrow%", this.right_arrow)
                     .replace("%rank%", rank.getName())
-                    .replace("%displayName%", CC.translate(rank.getDisplayname())));
+                    .replace("%displayName%", CC.translate(rank.getDisplayName())));
         }
     }
 
@@ -85,7 +87,7 @@ public class RankCommands {
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.prefix"))
                     .replace("%right_arrow%", this.right_arrow)
-                    .replace("%displayName%", CC.translate(rank.getDisplayname()))
+                    .replace("%displayName%", CC.translate(rank.getDisplayName()))
                     .replace("%prefix%", CC.translate(rank.getPrefix())));
         }
     }
@@ -101,7 +103,7 @@ public class RankCommands {
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.color"))
                     .replace("%right_arrow%", this.right_arrow)
-                    .replace("%displayName%", CC.translate(rank.getDisplayname()))
+                    .replace("%displayName%", CC.translate(rank.getDisplayName()))
                     .replace("%color%", CC.translate(rank.getColor() + rank.getColor().name().toUpperCase())));
         }
     }
@@ -114,10 +116,11 @@ public class RankCommands {
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.doesnt_exist")));
         } else {
             rank.setWeight(weight);
+            rank.sort(Comparator.comparing(Rank::getWeight).reversed());
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.weight"))
                     .replace("%right_arrow%", this.right_arrow)
-                    .replace("%displayName%", CC.translate(rank.getDisplayname()))
+                    .replace("%displayName%", CC.translate(rank.getDisplayName()))
                     .replace("%weight%", Integer.toString(rank.getWeight())));
         }
     }
@@ -134,7 +137,7 @@ public class RankCommands {
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.permission.add"))
                     .replace("%right_arrow%", this.right_arrow)
                     .replace("%permission%", permission)
-                    .replace("%rank%", CC.translate(rank.getDisplayname())));
+                    .replace("%rank%", CC.translate(rank.getDisplayName())));
         }
     }
 
@@ -150,7 +153,7 @@ public class RankCommands {
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.permission.remove"))
                     .replace("%right_arrow%", this.right_arrow)
                     .replace("%permission%", permission)
-                    .replace("%rank%", CC.translate(rank.getDisplayname())));
+                    .replace("%rank%", CC.translate(rank.getDisplayName())));
         }
     }
 }

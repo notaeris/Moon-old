@@ -27,7 +27,7 @@ public class RankElement implements Element {
         if (this.findRank("Default") == null) {
             profile.addGrant(new Grant(new Rank("Default", System.currentTimeMillis()), profile, "&4&lCONSOLE", "Default rank", System.currentTimeMillis()));
         } else {
-            profile.addGrant(new Grant(this.findRank("Default"), profile, "&4&LCONSOLE", "Default rank", System.currentTimeMillis()));
+            profile.addGrant(new Grant(this.findRank("Default"), profile, "&4&LCONSOLE", "First time joining", System.currentTimeMillis()));
         }
     }
 }
