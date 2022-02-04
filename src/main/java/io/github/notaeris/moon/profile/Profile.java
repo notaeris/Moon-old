@@ -23,7 +23,7 @@ public class Profile {
 
     private final List<Grant> grants = new ArrayList<>();
 
-
+    private final Set<Profile> fly = new HashSet<>();
 
     /**
      * Constructor for creating a {@link Profile}

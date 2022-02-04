@@ -32,7 +32,10 @@ command:
       add: "&9&lMOON &f%right_arrow% &eYou have &aadded &ethe permission &f%permission% &eto rank &f%rank%"
       remove: "&9&lMOON &f%right_arrow% &eYou have &cremoved &ethe permission &f%permission% &eto rank &f%rank%"
   gamemode: "&9&lMOON &f%star% &eYou have &aupdated &eyour gamemode to &6%gameMode%&e."
-  teleport: "&eYou have &ateleported &eto &f%target%&e."
-  teleportHere: "&eYou have &ateleported &6%target% &eto &6%player%&e."
+  teleport: "&9&lMOON &f%star% &eYou have &ateleported &eto &f%target%&e."
+  teleportHere: "&9&lMOON &f%star% &eYou have &ateleported &6%target% &eto &6%player%&e."
+  fly:
+    enabled: "&9&lMOON &f%star% &eYou have &aenabled &efly."
+    disabled: "&9&lMOON &f%star% &eYou have &cdisabled &efly."
 
 player_doesnt_exist: "&cSorry but we couldn't find the player you were looking for."

@@ -26,6 +26,7 @@ public class TeleportCommands {
             player.getPlayer().teleport(targetPlayer);
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.teleport"))
+                    .replace("%star%", "✪")
                     .replace("%target%", this.profileElement
                             .findProfile(targetPlayer.getUniqueId()).getGrant().getColor() + targetPlayer.getName()));
         }
@@ -41,6 +42,7 @@ public class TeleportCommands {
             player.getPlayer().teleport(targetPlayer);
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.teleportHere"))
+                    .replace("%star%", "✪")
                     .replace("%target%", this.profileElement
                             .findProfile(targetPlayer.getUniqueId()).getGrant().getColor() + targetPlayer.getName())
                     .replace("%player%", this.profileElement
