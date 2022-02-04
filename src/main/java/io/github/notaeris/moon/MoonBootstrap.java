@@ -1,6 +1,7 @@
 package io.github.notaeris.moon;
 
 import io.github.nosequel.command.bukkit.BukkitCommandHandler;
+import io.github.notaeris.moon.command.TeleportCommands;
 import io.github.notaeris.moon.command.gamemode.GameModeCommand;
 import io.github.notaeris.moon.command.MoonCommand;
 import io.github.notaeris.moon.command.rank.GrantCommands;
@@ -41,7 +42,8 @@ public class MoonBootstrap {
                 new MoonCommand(),
                 new RankCommands(),
                 new GrantCommands(),
-                new GameModeCommand()
+                new GameModeCommand(),
+                new TeleportCommands()
         );
     }
 }

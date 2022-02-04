@@ -67,7 +67,7 @@ public class RankCommands {
         } else {
             rank.setDisplayname(displayName);
 
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.displayname"))
+            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.displayName"))
                     .replace("%right_arrow%", this.right_arrow)
                     .replace("%rank%", rank.getName())
                     .replace("%displayName%", CC.translate(rank.getDisplayname())));
