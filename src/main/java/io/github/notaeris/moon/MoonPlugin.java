@@ -1,8 +1,6 @@
 package io.github.notaeris.moon;
 
-import io.github.notaeris.moon.bootstrap.MoonBootstrap;
 import lombok.Getter;
-import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter

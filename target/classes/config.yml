@@ -31,3 +31,4 @@ command:
     permission:
       add: "&9&lMOON &f%right_arrow% &eYou have &aadded &ethe permission &f%permission% &eto rank &f%rank%"
       remove: "&9&lMOON &f%right_arrow% &eYou have &cremoved &ethe permission &f%permission% &eto rank &f%rank%"
+  gamemode: "&9&lMOON &f%star% &eYou have &aupdated &eyour gamemode to &6%gameMode%&e."

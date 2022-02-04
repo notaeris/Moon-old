@@ -2,6 +2,7 @@ package io.github.notaeris.moon.element;
 
 import io.github.nosequel.command.CommandHandler;
 import io.github.notaeris.moon.MoonPlugin;
+import io.github.notaeris.moon.command.gamemode.adapter.GameModeTypeAdapter;
 import io.github.notaeris.moon.profile.Profile;
 import io.github.notaeris.moon.profile.adapter.ProfileTypeAdapter;
 import io.github.notaeris.moon.rank.Rank;
@@ -9,6 +10,7 @@ import io.github.notaeris.moon.rank.adapter.RankTypeAdapter;
 import io.github.notaeris.moon.util.adapter.ChatColorTypeAdapter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.event.Listener;
 
 import java.util.Arrays;
@@ -73,6 +75,7 @@ public interface Element {
         commandHandler.registerTypeAdapter(ChatColor.class, new ChatColorTypeAdapter());
         commandHandler.registerTypeAdapter(Profile.class, new ProfileTypeAdapter());
         commandHandler.registerTypeAdapter(Rank.class, new RankTypeAdapter());
+        commandHandler.registerTypeAdapter(GameMode.class, new GameModeTypeAdapter());
 
         Arrays.stream(objects)
                 .forEach(commandHandler::registerCommand);
