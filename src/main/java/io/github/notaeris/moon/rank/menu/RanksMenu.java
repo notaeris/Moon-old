@@ -11,6 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class RanksMenu extends PaginatedMenu {
 
@@ -32,7 +33,7 @@ public class RanksMenu extends PaginatedMenu {
     }
 
     private String[] getLore(Rank rank) {
-        String prefixHandler = rank.getPrefix() == null ? "None" : rank.getPrefix();
+        String prefixHandler = Objects.equals(rank.getPrefix(), "") ? "None" : rank.getPrefix();
 
         return new String[] {
                 ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + StringUtils.repeat("-", 25),
