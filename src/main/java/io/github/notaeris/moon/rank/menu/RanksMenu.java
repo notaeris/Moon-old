@@ -4,6 +4,7 @@ import io.github.nosequel.menu.buttons.Button;
 import io.github.nosequel.menu.pagination.PaginatedMenu;
 import io.github.notaeris.moon.rank.Rank;
 import io.github.notaeris.moon.util.CC;
+import io.github.notaeris.moon.util.MoonConstants;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -37,11 +38,11 @@ public class RanksMenu extends PaginatedMenu {
                 ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + StringUtils.repeat("-", 25),
                 CC.translate("&a+ " + new Date(rank.getCreationDate())),
                 "",
-                CC.translate("&f✪ &eWeight&7: &f" + rank.getWeight()),
-                CC.translate("&f✪ &eColor&7: &f" + rank.getColor() + rank.getColor().name().toUpperCase()),
-                CC.translate("&f✪ &ePrefix&7: &f" + prefixHandler),
+                CC.translate("&f" + MoonConstants.PREFIX + " &eWeight&7: &f" + rank.getWeight()),
+                CC.translate("&f" + MoonConstants.PREFIX + " &eColor&7: &f" + rank.getColor() + rank.getColor().name().toUpperCase()),
+                CC.translate("&f"+ MoonConstants.PREFIX + " &ePrefix&7: &f" + prefixHandler),
                 "",
-                CC.translate("&f✪ &eDisplay&7: &f" + rank.getPrefix() + this.getPlayer().getName()),
+                CC.translate("&f✦ &eDisplay&7: &f" + rank.getPrefix() + this.getPlayer().getName()),
                 ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + StringUtils.repeat("-", 25)
         };
     }

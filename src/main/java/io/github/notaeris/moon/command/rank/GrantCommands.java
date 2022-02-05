@@ -10,6 +10,7 @@ import io.github.notaeris.moon.rank.RankElement;
 import io.github.notaeris.moon.rank.grant.Grant;
 import io.github.notaeris.moon.rank.grant.menu.GrantsMenu;
 import io.github.notaeris.moon.util.CC;
+import io.github.notaeris.moon.util.MoonConstants;
 import org.bukkit.entity.Player;
 
 public class GrantCommands {
@@ -33,10 +34,11 @@ public class GrantCommands {
             player.getPlayer().sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.doesnt_exist")));
             return;
         }
+
         targetProfile.addGrant(new Grant(rank, targetProfile, this.profileElement.findProfile(player.getPlayer().getUniqueId()).getPlayer().getName(), "lol", System.currentTimeMillis()));
 
         player.getPlayer().sendMessage(CC.translate(this.plugin.getConfig().getString("command.rank.grant"))
-                .replace("%right_arrow%", "✪")
+                .replace("%star%", MoonConstants.PREFIX)
                 .replace("%rank%", CC.translate(rank.getDisplayName()))
                 .replace("%profile%", this.profileElement.findProfile(player.getPlayer().getUniqueId()).getGrant().getColor() + player.getPlayer().getName()));
     }

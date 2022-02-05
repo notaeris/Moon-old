@@ -7,6 +7,7 @@ import io.github.notaeris.moon.profile.Profile;
 import io.github.notaeris.moon.profile.ProfileElement;
 import io.github.notaeris.moon.rank.grant.Grant;
 import io.github.notaeris.moon.util.CC;
+import io.github.notaeris.moon.util.MoonConstants;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -15,8 +16,6 @@ import java.util.Date;
 import java.util.List;
 
 public class GrantsMenu extends PaginatedMenu {
-
-    private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     private final ProfileElement profileElement = MoonPlugin.getPlugin(MoonPlugin.class)
             .getMoonBootstrap().getElementHandler()
@@ -50,11 +49,11 @@ public class GrantsMenu extends PaginatedMenu {
         return new String[] {
                 CC.translate("&a+ " + new Date(grant.getStartDate())),
                 "",
-                CC.translate("&eTarget&7: &f" + grant.getTarget().getGrant().getColor() + grant.getTarget().getPlayer().getName()),
-                CC.translate("&eRank&7: &f" + grant.getRank().getDisplayName()),
+                CC.translate("&f" + MoonConstants.PREFIX + " &eTarget&7: &f" + grant.getTarget().getGrant().getColor() + grant.getTarget().getPlayer().getName()),
+                CC.translate("&f" + MoonConstants.PREFIX + " &eRank&7: &f" + grant.getRank().getDisplayName()),
                 "",
-                CC.translate("&eIssued By&7: &f" + grant.getExecutor()),
-                CC.translate("&eIssued Reason&7: &f" + grant.getReason())
+                CC.translate("&f" + MoonConstants.PREFIX + " &eIssued By&7: &f" + grant.getExecutor()),
+                CC.translate("&f" + MoonConstants.PREFIX + " &eIssued Reason&7: &f" + grant.getReason())
         };
     }
 }

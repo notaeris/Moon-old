@@ -2,7 +2,6 @@ package io.github.notaeris.moon.util;
 
 import lombok.experimental.UtilityClass;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 
 @UtilityClass
 public class CC {
@@ -25,40 +24,48 @@ public class CC {
      */
     public byte getColor(ChatColor color) {
         switch (color) {
-            case GOLD:
-                return 1;
-
-            case BLUE:
-                return 3;
-
-            case YELLOW:
-                return 4;
-
-            case GREEN:
-                return 5;
-
-            case DARK_PURPLE:
-            case LIGHT_PURPLE:
-                return 2;
-
             case RED:
             case DARK_RED:
-                return 14;
+                return 1;
 
-            case GRAY:
-                return 8;
+            case AQUA:
+                return 12;
 
-            case DARK_GRAY:
-                return 7;
+            case BLACK:
+                return 0;
 
-            case DARK_AQUA:
-                return 9;
+            case DARK_GREEN:
+                return 2;
+
+            case BLUE:
+                return 4;
 
             case DARK_BLUE:
+                return 6;
+
+            case DARK_PURPLE:
+                return 5;
+
+            case GRAY:
+                return 7;
+
+            case DARK_GRAY:
+                return 8;
+
+            case LIGHT_PURPLE:
+                return 9;
+
+            case GREEN:
+                return 10;
+
+            case YELLOW:
                 return 11;
 
+            case GOLD:
+                return 14;
+
             default:
-                return 0;
+                return 15;
         }
     }
 }

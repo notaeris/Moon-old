@@ -5,6 +5,7 @@ import io.github.nosequel.command.bukkit.executor.BukkitCommandExecutor;
 import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.profile.ProfileElement;
 import io.github.notaeris.moon.util.CC;
+import io.github.notaeris.moon.util.MoonConstants;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -26,7 +27,7 @@ public class TeleportCommands {
             player.getPlayer().teleport(targetPlayer);
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.teleport"))
-                    .replace("%star%", "✪")
+                    .replace("%star%", MoonConstants.PREFIX)
                     .replace("%target%", this.profileElement
                             .findProfile(targetPlayer.getUniqueId()).getGrant().getColor() + targetPlayer.getName()));
         }
@@ -42,7 +43,7 @@ public class TeleportCommands {
             player.getPlayer().teleport(targetPlayer);
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.teleportHere"))
-                    .replace("%star%", "✪")
+                    .replace("%star%", MoonConstants.PREFIX)
                     .replace("%target%", this.profileElement
                             .findProfile(targetPlayer.getUniqueId()).getGrant().getColor() + targetPlayer.getName())
                     .replace("%player%", this.profileElement

@@ -4,6 +4,7 @@ import io.github.nosequel.command.annotation.Command;
 import io.github.nosequel.command.bukkit.executor.BukkitCommandExecutor;
 import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.util.CC;
+import io.github.notaeris.moon.util.MoonConstants;
 import org.bukkit.GameMode;
 
 import static org.bukkit.GameMode.*;
@@ -32,7 +33,7 @@ public class GameModeCommand {
 
         player.sendMessage(CC.translate(MoonPlugin.getPlugin(MoonPlugin.class)
                 .getConfig().getString("command.gamemode"))
-                .replace("%star%", "✪")
+                .replace("%star%", MoonConstants.PREFIX)
                 .replace("%gameMode%", player.getPlayer().getGameMode().name().toUpperCase()));
     }
 }

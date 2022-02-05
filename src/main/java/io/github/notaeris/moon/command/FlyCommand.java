@@ -6,6 +6,7 @@ import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.profile.Profile;
 import io.github.notaeris.moon.profile.ProfileElement;
 import io.github.notaeris.moon.util.CC;
+import io.github.notaeris.moon.util.MoonConstants;
 
 public class FlyCommand {
 
@@ -24,13 +25,13 @@ public class FlyCommand {
             player.getPlayer().setAllowFlight(true);
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.fly.enabled"))
-                    .replace("%star%", "✪"));
+                    .replace("%star%", MoonConstants.PREFIX));
         } else {
             profile.getFly().remove(profile);
             player.getPlayer().setAllowFlight(false);
 
             player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.fly.disabled"))
-                    .replace("%star%", "✪"));
+                    .replace("%star%", MoonConstants.PREFIX));
         }
     }
 }
