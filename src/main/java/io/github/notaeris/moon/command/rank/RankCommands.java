@@ -50,7 +50,7 @@ public class RankCommands {
                     .replace("%star%", MoonConstants.PREFIX)
                     .replace("%displayName%", rank.getDisplayName()));
 
-            rank.delete(rank);
+            rank.deleteRank(rank);
         }
     }
 

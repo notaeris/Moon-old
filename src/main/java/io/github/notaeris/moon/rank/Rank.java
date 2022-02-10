@@ -48,7 +48,7 @@ public class Rank {
      *
      * @param rank the deleted rank
      */
-    public void delete(Rank rank) {
+    public void deleteRank(Rank rank) {
         ranks.remove(rank);
     }
 

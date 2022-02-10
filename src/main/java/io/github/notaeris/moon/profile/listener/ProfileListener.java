@@ -3,6 +3,7 @@ package io.github.notaeris.moon.profile.listener;
 import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.profile.Profile;
 import io.github.notaeris.moon.profile.ProfileElement;
+import io.github.notaeris.moon.tag.Tag;
 import io.github.notaeris.moon.util.CC;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,6 +13,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.permissions.PermissionAttachment;
+
+import java.util.Objects;
 
 public class ProfileListener implements Listener {
 
@@ -50,7 +53,11 @@ public class ProfileListener implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
-        event.setFormat(CC.translate(this.profileElement.findProfile(event.getPlayer().getUniqueId()).getGrant().getPrefix()
-                + event.getPlayer().getName() + "&7: &f" + event.getMessage()));
+        Player player = event.getPlayer();
+        Profile profile = this.profileElement.findProfile(player.getUniqueId());
+        String tagHandler = Objects.equals(profile.getTagGrant().getPrefix(), "") ? "" : profile.getTagGrant().getPrefix();
+
+        event.setFormat(CC.translate(tagHandler + " &f" + profile.getGrant().getPrefix()
+                + player.getName() + "&7: &f" + event.getMessage()));
     }
 }

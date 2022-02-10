@@ -7,10 +7,12 @@ import io.github.notaeris.moon.command.gamemode.GameModeCommand;
 import io.github.notaeris.moon.command.MoonCommand;
 import io.github.notaeris.moon.command.rank.GrantCommands;
 import io.github.notaeris.moon.command.rank.RankCommands;
+import io.github.notaeris.moon.command.tag.TagCommands;
 import io.github.notaeris.moon.element.ElementHandler;
 import io.github.notaeris.moon.profile.ProfileElement;
 import io.github.notaeris.moon.profile.listener.ProfileListener;
 import io.github.notaeris.moon.rank.RankElement;
+import io.github.notaeris.moon.tag.TagElement;
 import lombok.Getter;
 
 @Getter
@@ -28,7 +30,8 @@ public class MoonBootstrap {
     private void initialiseElements() {
         this.elementHandler.initialiseElements(
                 new ProfileElement(),
-                new RankElement()
+                new RankElement(),
+                new TagElement()
         );
     }
 
@@ -45,7 +48,8 @@ public class MoonBootstrap {
                 new GrantCommands(),
                 new GameModeCommand(),
                 new TeleportCommands(),
-                new FlyCommand()
+                new FlyCommand(),
+                new TagCommands()
         );
     }
 }

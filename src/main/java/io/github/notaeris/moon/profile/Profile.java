@@ -4,6 +4,8 @@ import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.rank.Rank;
 import io.github.notaeris.moon.rank.RankElement;
 import io.github.notaeris.moon.rank.grant.Grant;
+import io.github.notaeris.moon.tag.Tag;
+import io.github.notaeris.moon.tag.grant.TagsGrant;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -22,6 +24,7 @@ public class Profile {
             .findElement(RankElement.class);
 
     private final List<Grant> grants = new ArrayList<>();
+    private final List<TagsGrant> tagsGrants = new ArrayList<>();
 
     private final Set<Profile> fly = new HashSet<>();
 
@@ -55,6 +58,21 @@ public class Profile {
      */
     public Rank getGrant() {
         return this.grants.get(0).getRank();
+    }
+
+    /**
+     * Add a {@link TagsGrant} to a {@link Profile}
+     *
+     * @param tagsGrant the tagsGrant
+     * @return the {@link TagsGrant} to add
+     */
+    public boolean addTag(TagsGrant tagsGrant) {
+        this.tagsGrants.add(tagsGrant);
+        return false;
+    }
+
+    public Tag getTagGrant() {
+        return this.tagsGrants.get(0).getTag();
     }
 
     public Player getPlayer() {
