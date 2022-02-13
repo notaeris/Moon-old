@@ -55,9 +55,15 @@ public class ProfileListener implements Listener {
     public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         Profile profile = this.profileElement.findProfile(player.getUniqueId());
-        String tagHandler = Objects.equals(profile.getTagGrant().getPrefix(), "") ? "" : profile.getTagGrant().getPrefix();
 
-        event.setFormat(CC.translate(tagHandler + " &f" + profile.getGrant().getPrefix()
-                + player.getName() + "&7: &f" + event.getMessage()));
+        try {
+            String tagHandler = Objects.equals(profile.getTagGrant().getPrefix(), "") ? "" : profile.getTagGrant().getPrefix();
+
+            event.setFormat(CC.translate(tagHandler + " &f" + profile.getGrant().getPrefix()
+                    + player.getName() + "&7: &f" + event.getMessage()));
+        } catch (IndexOutOfBoundsException exception) {
+            event.setFormat(CC.translate(profile.getGrant().getPrefix()
+                    + player.getName() + "&7: &f" + event.getMessage()));
+        }
     }
 }

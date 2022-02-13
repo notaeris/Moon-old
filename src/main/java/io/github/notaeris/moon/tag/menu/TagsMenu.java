@@ -28,18 +28,19 @@ public class TagsMenu extends PaginatedMenu {
 
     @Override
     public void tick() {
-        this.buttons[25] = new Button(Material.SKULL)
-                .setDisplayName(CC.translate("&6" + this.getPlayer().getName()))
-                .setLore(new String[] {
-                        "&f" + MoonConstants.PREFIX + " &eTag Selected: &f"
-                });
-
         for (int i = 0; i < Tag.getTags().size(); i++) {
             Tag tag = Tag.getTags().get(i);
             Profile profile = this.profileElement.findProfile(this.getPlayer().getUniqueId());
+            String tagHandler = Objects.equals(tag.getPrefix(), "") ? "None" : tag.getPrefix();
+
+            this.buttons[36] = new Button(Material.SKULL_ITEM)
+                    .setDisplayName(CC.translate("&6" + this.getPlayer().getName()))
+                    .setLore(new String[] {
+                            "&f" + MoonConstants.PREFIX + " &eTag Selected: &f" + tagHandler
+                    });
 
             this.buttons[i] = new Button(Material.NAME_TAG)
-                    .setDisplayName(CC.translate("&2" + tag.getName()))
+                    .setDisplayName(CC.translate("&a" + tag.getName()))
                     .setLore(this.getLore(tag))
                     .setClickAction(event -> event.setCancelled(profile.addTag(new TagsGrant(tag, profile))));
         }
@@ -62,7 +63,7 @@ public class TagsMenu extends PaginatedMenu {
                 CC.translate("&f" + MoonConstants.PREFIX + " &7Preview: &f" + tagHandler),
                 CC.translate("&f" + MoonConstants.PREFIX + " &7Permissions: &f" + tag.getPermissions().size() + " " + permission),
                 "",
-                "&fClick to &aselect &ftag &2" + tag.getName(),
+                "&fClick to &aselect &ftag &a" + tag.getName(),
                 CC.translate(StringUtils.repeat("&7&m-", 25))
         };
     }
