@@ -3,6 +3,9 @@ package io.github.notaeris.moon.profile.listener;
 import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.profile.Profile;
 import io.github.notaeris.moon.profile.ProfileElement;
+import io.github.notaeris.moon.punishment.Punishment;
+import io.github.notaeris.moon.punishment.PunishmentElement;
+import io.github.notaeris.moon.punishment.type.PunishmentType;
 import io.github.notaeris.moon.tag.Tag;
 import io.github.notaeris.moon.util.CC;
 import org.bukkit.entity.Player;
@@ -24,6 +27,10 @@ public class ProfileListener implements Listener {
             .getMoonBootstrap().getElementHandler()
             .findElement(ProfileElement.class);
 
+    private final PunishmentElement punishmentElement = this.plugin
+            .getMoonBootstrap().getElementHandler()
+            .findElement(PunishmentElement.class);
+
     @Deprecated
     @EventHandler
     public void onPreJoin(PlayerPreLoginEvent event) {
@@ -35,8 +42,17 @@ public class ProfileListener implements Listener {
         event.setJoinMessage(null);
 
         Player player = event.getPlayer();
-        Profile profile = this.profileElement.findProfile(player.getUniqueId());
 
+        try {
+            Punishment punishment = this.punishmentElement.findPunishment(player.getUniqueId());
+
+            if (punishment.findPunishmentType(PunishmentType.BAN).isActive()) {
+                player.kickPlayer(punishment.getReason());
+            }
+        } catch (NullPointerException ignored) {
+        }
+
+        Profile profile = this.profileElement.findProfile(player.getUniqueId());
         PermissionAttachment permissionAttachment = player.addAttachment(this.plugin);
 
         for (String permission : profile.getGrant().getPermissions()) {

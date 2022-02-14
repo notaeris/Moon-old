@@ -5,12 +5,17 @@ import io.github.notaeris.moon.command.FlyCommand;
 import io.github.notaeris.moon.command.TeleportCommands;
 import io.github.notaeris.moon.command.gamemode.GameModeCommand;
 import io.github.notaeris.moon.command.MoonCommand;
+import io.github.notaeris.moon.command.punishment.PunishmentsCommand;
+import io.github.notaeris.moon.command.punishment.type.BanCommand;
+import io.github.notaeris.moon.command.punishment.type.KickCommand;
+import io.github.notaeris.moon.command.punishment.type.UnbanCommand;
 import io.github.notaeris.moon.command.rank.GrantCommands;
 import io.github.notaeris.moon.command.rank.RankCommands;
-import io.github.notaeris.moon.command.tag.TagCommands;
+import io.github.notaeris.moon.command.TagCommands;
 import io.github.notaeris.moon.element.ElementHandler;
 import io.github.notaeris.moon.profile.ProfileElement;
 import io.github.notaeris.moon.profile.listener.ProfileListener;
+import io.github.notaeris.moon.punishment.PunishmentElement;
 import io.github.notaeris.moon.rank.RankElement;
 import io.github.notaeris.moon.tag.TagElement;
 import lombok.Getter;
@@ -31,7 +36,8 @@ public class MoonBootstrap {
         this.elementHandler.initialiseElements(
                 new ProfileElement(),
                 new RankElement(),
-                new TagElement()
+                new TagElement(),
+                new PunishmentElement()
         );
     }
 
@@ -49,7 +55,11 @@ public class MoonBootstrap {
                 new GameModeCommand(),
                 new TeleportCommands(),
                 new FlyCommand(),
-                new TagCommands()
+                new TagCommands(),
+                new KickCommand(),
+                new BanCommand(),
+                new UnbanCommand(),
+                new PunishmentsCommand()
         );
     }
 }
