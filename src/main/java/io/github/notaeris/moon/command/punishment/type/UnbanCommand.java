@@ -14,7 +14,7 @@ public class UnbanCommand {
     private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     private final PunishmentElement punishmentElement = this.plugin
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(PunishmentElement.class);
 
     @Command(label = "unban", permission = "moon.command.unban")

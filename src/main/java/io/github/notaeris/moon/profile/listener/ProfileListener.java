@@ -24,11 +24,11 @@ public class ProfileListener implements Listener {
     private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     private final ProfileElement profileElement = this.plugin
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(ProfileElement.class);
 
     private final PunishmentElement punishmentElement = this.plugin
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(PunishmentElement.class);
 
     @Deprecated

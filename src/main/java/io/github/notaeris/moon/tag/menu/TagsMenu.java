@@ -19,7 +19,7 @@ import java.util.Objects;
 public class TagsMenu extends PaginatedMenu {
 
     private final ProfileElement profileElement = MoonPlugin.getPlugin(MoonPlugin.class)
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(ProfileElement.class);
 
     public TagsMenu(Player player) {

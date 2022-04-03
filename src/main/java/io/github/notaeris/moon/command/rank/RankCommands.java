@@ -18,7 +18,7 @@ public class RankCommands {
     private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     private final RankElement rankElement = this.plugin
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(RankElement.class);
 
     @Command(label = "rank", permission = "moon.command.rank")

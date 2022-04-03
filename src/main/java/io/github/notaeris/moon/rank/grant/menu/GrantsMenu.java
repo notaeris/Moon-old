@@ -18,7 +18,7 @@ import java.util.List;
 public class GrantsMenu extends PaginatedMenu {
 
     private final ProfileElement profileElement = MoonPlugin.getPlugin(MoonPlugin.class)
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(ProfileElement.class);
 
     private final Profile target;

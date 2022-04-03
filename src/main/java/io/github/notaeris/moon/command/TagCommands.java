@@ -15,7 +15,7 @@ public class TagCommands {
     private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     private final TagElement tagElement = this.plugin
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(TagElement.class);
 
     @Command(label = "tag", permission = "moon.command.tag")

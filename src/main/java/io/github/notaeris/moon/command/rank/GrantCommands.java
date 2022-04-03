@@ -18,11 +18,11 @@ public class GrantCommands {
     private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     private final RankElement rankElement = this.plugin
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(RankElement.class);
 
     private final ProfileElement profileElement = this.plugin
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(ProfileElement.class);
 
     @Command(label = "grant", permission = "moon.command.grant", userOnly = true)

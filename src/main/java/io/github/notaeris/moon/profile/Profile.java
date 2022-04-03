@@ -20,7 +20,7 @@ public class Profile {
     @Getter private static final Map<UUID, Profile> profileMap = new HashMap<>();
 
     private final RankElement rankElement = MoonPlugin.getPlugin(MoonPlugin.class)
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(RankElement.class);
 
     private final List<Grant> grants = new ArrayList<>();

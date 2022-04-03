@@ -14,7 +14,7 @@ public class PunishmentsCommand {
     private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     private final PunishmentElement punishmentElement = this.plugin
-            .getMoonBootstrap().getElementHandler()
+            .getElementHandler()
             .findElement(PunishmentElement.class);
 
     @Command(label = "punishments", aliases = { "history" }, permission = "moon.command.punishments")
