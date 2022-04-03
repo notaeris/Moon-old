@@ -64,11 +64,6 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
-
-        <repository>
-            <id>ashcon.app</id>
-            <url>https://repo.ashcon.app/nexus/content/repositories/snapshots/</url>
-        </repository>
     </repositories>
 
     <dependencies>
