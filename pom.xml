@@ -71,31 +71,35 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.8-R0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>LATEST</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>3.12.10</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.github.NoSequel</groupId>
             <artifactId>CommandAPI</artifactId>
             <version>c3f21168be</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.github.NoSequel</groupId>
             <artifactId>MenuAPI</artifactId>
             <version>f157aa11a0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

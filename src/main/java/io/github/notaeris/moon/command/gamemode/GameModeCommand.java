@@ -11,9 +11,6 @@ public class GameModeCommand {
 
     @Command(label = "gamemode", aliases = { "gm" }, permission = "moon.command.gamemode", userOnly = true)
     public void gameMode(BukkitCommandExecutor player, GameMode gameMode) {
-
-
-
         player.getPlayer().setGameMode(gameMode);
 
         player.sendMessage(CC.translate(MoonPlugin.getPlugin(MoonPlugin.class)
