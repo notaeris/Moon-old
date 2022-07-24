@@ -1,5 +1,6 @@
 package io.github.notaeris.moon.tag;
 
+import io.github.notaeris.moon.MoonPlugin;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +17,10 @@ public class Tag {
     private final long creationDate;
     private String prefix = "";
 
-    private final Set<String> permissions = new HashSet<>();
+    private final TagElement tagElement = MoonPlugin.getPlugin(MoonPlugin.class)
+            .getElementHandler().findElement(TagElement.class);
 
-    @Getter private static final List<Tag> tags = new ArrayList<>();
+    private final Set<String> permissions = new HashSet<>();
 
     /**
      * Constructor for creating a {@link Tag}
@@ -30,7 +32,7 @@ public class Tag {
         this.name = name;
         this.creationDate = creationDate;
 
-        tags.add(this);
+        this.tagElement.getTags().add(this);
     }
 
     /**
@@ -39,7 +41,7 @@ public class Tag {
      * @param tag the tag to be deleted
      */
     public void deleteTag(Tag tag) {
-        tags.remove(tag);
+        this.tagElement.getTags().remove(tag);
     }
 
     /**

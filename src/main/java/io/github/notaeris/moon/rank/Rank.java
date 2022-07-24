@@ -1,5 +1,6 @@
 package io.github.notaeris.moon.rank;
 
+import io.github.notaeris.moon.MoonPlugin;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.ChatColor;
@@ -17,21 +18,22 @@ public class Rank {
     private int weight = 0;
     private final long creationDate;
 
-    @Getter private static final List<Rank> ranks = new ArrayList<>();
+    private final RankElement rankElement = MoonPlugin.getPlugin(MoonPlugin.class)
+            .getElementHandler().findElement(RankElement.class);
 
     private final Set<String> permissions = new HashSet<>();
 
     /**
      * Constructor for creating a {@link Rank}
      *
-     * @param name the rank name
+     * @param rankName the name of the {@link Rank} being created
      */
-    public Rank(String name, long creationDate) {
-        this.name = name;
-        this.displayName = name;
+    public Rank(String rankName, long creationDate) {
+        this.name = rankName;
+        this.displayName = rankName;
         this.creationDate = creationDate;
 
-        ranks.add(this);
+        this.rankElement.getRanks().add(this);
     }
 
     /**
@@ -40,7 +42,7 @@ public class Rank {
      * @param rankComparator the rankComparator
      */
     public void sort(Comparator<Rank> rankComparator) {
-        ranks.sort(rankComparator);
+        this.rankElement.getRanks().sort(rankComparator);
     }
 
     /**
@@ -49,11 +51,11 @@ public class Rank {
      * @param rank the deleted rank
      */
     public void deleteRank(Rank rank) {
-        ranks.remove(rank);
+        this.rankElement.getRanks().remove(rank);
     }
 
     /**
-     * Add a permission to a {@link Rank}
+     * Add a permission to a {@link Rank} by {@link String}
      *
      * @param permission the permission to add
      */
@@ -62,7 +64,7 @@ public class Rank {
     }
 
     /**
-     * Remove a permission from a {@link Rank}
+     * Remove a permission from a {@link Rank} by {@link String}
      *
      * @param permission the permission to remove
      */

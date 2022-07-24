@@ -11,18 +11,16 @@ import org.bukkit.entity.Player;
 
 public class PunishmentsCommand {
 
-    private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
-
-    private final PunishmentElement punishmentElement = this.plugin
-            .getElementHandler()
-            .findElement(PunishmentElement.class);
+    private final MoonPlugin moonPlugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     @Command(label = "punishments", aliases = { "history" }, permission = "moon.command.punishments")
     public void punishments(BukkitCommandExecutor player, Player target) {
-        Punishment punishment = this.punishmentElement.findPunishment(target.getUniqueId());
+        final PunishmentElement punishmentElement = this.moonPlugin
+                .getElementHandler().findElement(PunishmentElement.class);
+        Punishment punishment = punishmentElement.findPunishment(target.getUniqueId());
 
         if (punishment == null) {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.punishment.couldnt_find")));
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.punishment.couldnt_find")));
         } else {
             new PunishmentsMenu(player.getPlayer()).updateMenu();
         }

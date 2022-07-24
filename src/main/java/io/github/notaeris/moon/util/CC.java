@@ -7,7 +7,7 @@ import org.bukkit.ChatColor;
 public class CC {
 
     /**
-     * Translate a string
+     * Translate a {@link String}
      *
      * @param string the string to be translated
      * @return the translated string
@@ -17,7 +17,7 @@ public class CC {
     }
 
     /**
-     * Convert a color to a byte
+     * Convert a {@link ChatColor} to a {@link Byte}
      *
      * @param color the color
      * @return the byte

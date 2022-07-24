@@ -32,7 +32,7 @@ public class ElementHandler {
     }
 
     /**
-     * Initialise all listed {@link Element}s
+     * Initialise all {@link Element}s
      *
      * @param elements the elements
      */
@@ -42,7 +42,7 @@ public class ElementHandler {
     }
 
     /**
-     * Initialise all listed listeners
+     * Initialise all {@link Listener}s
      *
      * @param listeners the listeners
      */
@@ -53,7 +53,7 @@ public class ElementHandler {
 
 
     /**
-     * Initialise all listed commands
+     * Initialise all listed commands using the {@link CommandHandler}
      *
      * @param objects the commands
      */

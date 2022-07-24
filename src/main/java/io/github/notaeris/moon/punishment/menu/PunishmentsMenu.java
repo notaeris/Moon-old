@@ -2,7 +2,9 @@ package io.github.notaeris.moon.punishment.menu;
 
 import io.github.nosequel.menu.buttons.Button;
 import io.github.nosequel.menu.pagination.PaginatedMenu;
+import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.punishment.Punishment;
+import io.github.notaeris.moon.punishment.PunishmentElement;
 import io.github.notaeris.moon.util.CC;
 import io.github.notaeris.moon.util.MoonConstants;
 import org.apache.commons.lang.StringUtils;
@@ -20,8 +22,11 @@ public class PunishmentsMenu extends PaginatedMenu {
 
     @Override
     public void tick() {
-        for (int i = 0; i < Punishment.getPunishments().size(); i++) {
-            Punishment punishment = Punishment.getPunishments().get(i);
+        final PunishmentElement punishmentElement = MoonPlugin.getPlugin(MoonPlugin.class)
+                .getElementHandler().findElement(PunishmentElement.class);
+
+        for (int i = 0; i < punishmentElement.getPunishments().size(); i++) {
+            Punishment punishment = punishmentElement.getPunishments().get(i);
 
             this.buttons[i] = new Button(Material.WOOL)
                     .setDisplayName(CC.translate("&8#" + punishment.getUuid().toString().substring(0, 8)))

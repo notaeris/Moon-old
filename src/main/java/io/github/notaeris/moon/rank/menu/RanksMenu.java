@@ -2,7 +2,9 @@ package io.github.notaeris.moon.rank.menu;
 
 import io.github.nosequel.menu.buttons.Button;
 import io.github.nosequel.menu.pagination.PaginatedMenu;
+import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.rank.Rank;
+import io.github.notaeris.moon.rank.RankElement;
 import io.github.notaeris.moon.util.CC;
 import io.github.notaeris.moon.util.MoonConstants;
 import org.apache.commons.lang.StringUtils;
@@ -21,8 +23,11 @@ public class RanksMenu extends PaginatedMenu {
 
     @Override
     public void tick() {
-        for (int i = 0; i < Rank.getRanks().size(); i++) {
-            Rank rank = Rank.getRanks().get(i);
+        final RankElement rankElement = MoonPlugin.getPlugin(MoonPlugin.class)
+                .getElementHandler().findElement(RankElement.class);
+
+        for (int i = 0; i < rankElement.getRanks().size(); i++) {
+            Rank rank = rankElement.getRanks().get(i);
 
             this.buttons[i] = new Button(Material.INK_SACK)
                     .setDisplayName(CC.translate(rank.getDisplayName()))

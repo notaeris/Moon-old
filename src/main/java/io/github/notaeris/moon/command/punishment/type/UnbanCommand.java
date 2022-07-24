@@ -11,27 +11,25 @@ import org.bukkit.OfflinePlayer;
 
 public class UnbanCommand {
 
-    private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
-
-    private final PunishmentElement punishmentElement = this.plugin
-            .getElementHandler()
-            .findElement(PunishmentElement.class);
+    private final MoonPlugin moonPlugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     @Command(label = "unban", permission = "moon.command.unban")
     public void unban(BukkitCommandExecutor player, OfflinePlayer target) {
         if (target == null) {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("player_doesnt_exist")));
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("player_doesnt_exist")));
         } else {
-            this.punishmentElement.findPunishment(target.getUniqueId())
+            final PunishmentElement punishmentElement = this.moonPlugin.
+                    getElementHandler().findElement(PunishmentElement.class);
+            punishmentElement.findPunishment(target.getUniqueId())
                     .findPunishmentType(PunishmentType.BAN)
                     .setActive(false);
 
             if (player == null) {
-                Bukkit.broadcastMessage(CC.translate(this.plugin.getConfig().getString("command.punishment.type.unban"))
+                Bukkit.broadcastMessage(CC.translate(this.moonPlugin.getConfig().getString("command.punishment.type.unban"))
                         .replace("%playerExecuted%", target.getName())
                         .replace("%executor%", "&4&lCONSOLE"));
             } else {
-                Bukkit.broadcastMessage(CC.translate(this.plugin.getConfig().getString("command.punishment.type.unban"))
+                Bukkit.broadcastMessage(CC.translate(this.moonPlugin.getConfig().getString("command.punishment.type.unban"))
                         .replace("%playerExecuted%", target.getName())
                         .replace("%executor%", player.getPlayer().getName()));
             }
