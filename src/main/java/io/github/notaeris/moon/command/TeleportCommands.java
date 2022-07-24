@@ -11,9 +11,9 @@ import org.bukkit.entity.Player;
 
 public class TeleportCommands {
 
-    private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
+    private final MoonPlugin moonPlugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
-    private final ProfileElement profileElement = this.plugin
+    private final ProfileElement profileElement = this.moonPlugin
             .getElementHandler()
             .findElement(ProfileElement.class);
 
@@ -22,11 +22,11 @@ public class TeleportCommands {
         Player targetPlayer = Bukkit.getPlayer(target);
 
         if (targetPlayer == null) {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("player_doesnt_exist")));
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("player_doesnt_exist")));
         } else {
             player.getPlayer().teleport(targetPlayer);
 
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.teleport"))
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.teleport"))
                     .replace("%star%", MoonConstants.PREFIX)
                     .replace("%target%", this.profileElement
                             .findProfile(targetPlayer.getUniqueId()).getGrant().getColor() + targetPlayer.getName()));
@@ -38,11 +38,11 @@ public class TeleportCommands {
         Player targetPlayer = Bukkit.getPlayer(target);
 
         if (targetPlayer == null) {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("player_doesnt_exist")));
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("player_doesnt_exist")));
         } else {
             player.getPlayer().teleport(targetPlayer);
 
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.teleportHere"))
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.teleportHere"))
                     .replace("%star%", MoonConstants.PREFIX)
                     .replace("%target%", this.profileElement
                             .findProfile(targetPlayer.getUniqueId()).getGrant().getColor() + targetPlayer.getName())

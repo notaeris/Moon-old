@@ -17,10 +17,6 @@ import java.util.List;
 
 public class GrantsMenu extends PaginatedMenu {
 
-    private final ProfileElement profileElement = MoonPlugin.getPlugin(MoonPlugin.class)
-            .getElementHandler()
-            .findElement(ProfileElement.class);
-
     private final Profile target;
 
     public GrantsMenu(Player player, Profile target) {
@@ -31,7 +27,9 @@ public class GrantsMenu extends PaginatedMenu {
 
     @Override
     public void tick() {
-        List<Grant> grants = new ArrayList<>(this.profileElement
+        final ProfileElement profileElement = MoonPlugin.getPlugin(MoonPlugin.class)
+                .getElementHandler().findElement(ProfileElement.class);
+        List<Grant> grants = new ArrayList<>(profileElement
                 .findProfile(target.getPlayer().getUniqueId())
                 .getGrants());
 

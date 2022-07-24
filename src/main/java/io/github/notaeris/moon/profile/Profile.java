@@ -15,13 +15,9 @@ import java.util.*;
 @Getter
 public class Profile {
 
-    private final UUID uuid;
+    private final MoonPlugin moonPlugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
-    @Getter private static final Map<UUID, Profile> profileMap = new HashMap<>();
-
-    private final RankElement rankElement = MoonPlugin.getPlugin(MoonPlugin.class)
-            .getElementHandler()
-            .findElement(RankElement.class);
+    private final UUID uniqueId;
 
     private final List<Grant> grants = new ArrayList<>();
     private final List<TagsGrant> tagsGrants = new ArrayList<>();
@@ -31,19 +27,24 @@ public class Profile {
     /**
      * Constructor for creating a {@link Profile}
      *
-     * @param uuid the uuid of the profile
+     * @param uniqueId the unique identifier of a profile
      */
-    public Profile(UUID uuid) {
-        this.uuid = uuid;
+    public Profile(UUID uniqueId) {
+        this.uniqueId = uniqueId;
 
-        profileMap.put(uuid, this);
-        this.rankElement.getDefaultRank(this);
+        final ProfileElement profileElement = this.moonPlugin
+                        .getElementHandler().findElement(ProfileElement.class);
+        profileElement.getProfileMap().put(uniqueId, this);
+
+        final RankElement rankElement = this.moonPlugin
+                .getElementHandler().findElement(RankElement.class);
+        rankElement.getDefaultRank(this);
     }
 
     /**
      * Add a {@link Grant} to a {@link Profile} and sort them by weight
      *
-     * @param grant the grant to add
+     * @param grant the {@link Grant} to add
      */
     public void addGrant(Grant grant) {
        this.grants.add(grant);
@@ -54,7 +55,7 @@ public class Profile {
     /**
      * Get a {@link Grant} from a {@link Profile}
      *
-     * @return the grant found
+     * @return the {@link Grant} found
      */
     public Rank getGrant() {
         return this.grants.get(0).getRank();
@@ -64,7 +65,7 @@ public class Profile {
      * Add a {@link TagsGrant} to a {@link Profile}
      *
      * @param tagsGrant the tagsGrant
-     * @return the {@link TagsGrant} to add
+     * @return the {@link TagsGrant} to be added
      */
     public boolean addTag(TagsGrant tagsGrant) {
         this.tagsGrants.add(tagsGrant);
@@ -76,6 +77,6 @@ public class Profile {
     }
 
     public Player getPlayer() {
-        return Bukkit.getPlayer(this.uuid);
+        return Bukkit.getPlayer(this.uniqueId);
     }
 }

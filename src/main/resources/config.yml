@@ -65,3 +65,7 @@ command:
       unban: "&f%playerExecuted% &ahas been unbanned by &f%executor%"
 
 player_doesnt_exist: "&cSorry but we couldn't find the player you were looking for."
+
+staff:
+  join: "&9[Staff] &f%profile% &ajoined &b%server%"
+  quit: "&9[Staff] &f%profile% &cleft &b%server%"

@@ -6,6 +6,7 @@ import io.github.notaeris.moon.MoonPlugin;
 import io.github.notaeris.moon.profile.Profile;
 import io.github.notaeris.moon.profile.ProfileElement;
 import io.github.notaeris.moon.tag.Tag;
+import io.github.notaeris.moon.tag.TagElement;
 import io.github.notaeris.moon.tag.grant.TagsGrant;
 import io.github.notaeris.moon.util.CC;
 import io.github.notaeris.moon.util.MoonConstants;
@@ -18,9 +19,7 @@ import java.util.Objects;
 
 public class TagsMenu extends PaginatedMenu {
 
-    private final ProfileElement profileElement = MoonPlugin.getPlugin(MoonPlugin.class)
-            .getElementHandler()
-            .findElement(ProfileElement.class);
+    private final MoonPlugin moonPlugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
     public TagsMenu(Player player) {
         super(player, CC.translate("&2Tags Menu"), 54);
@@ -28,9 +27,16 @@ public class TagsMenu extends PaginatedMenu {
 
     @Override
     public void tick() {
-        for (int i = 0; i < Tag.getTags().size(); i++) {
-            Tag tag = Tag.getTags().get(i);
-            Profile profile = this.profileElement.findProfile(this.getPlayer().getUniqueId());
+        final TagElement tagElement = this.moonPlugin
+                .getElementHandler().findElement(TagElement.class);
+
+        for (int i = 0; i < tagElement.getTags().size(); i++) {
+            Tag tag = tagElement.getTags().get(i);
+
+            final ProfileElement profileElement = this.moonPlugin
+                    .getElementHandler().findElement(ProfileElement.class);
+
+            Profile profile = profileElement.findProfile(this.getPlayer().getUniqueId());
             String tagHandler = Objects.equals(tag.getPrefix(), "") ? "None" : tag.getPrefix();
 
             this.buttons[36] = new Button(Material.SKULL_ITEM)

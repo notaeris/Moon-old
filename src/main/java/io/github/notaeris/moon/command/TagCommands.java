@@ -12,15 +12,15 @@ import io.github.notaeris.moon.util.MoonConstants;
 
 public class TagCommands {
 
-    private final MoonPlugin plugin = MoonPlugin.getPlugin(MoonPlugin.class);
+    private final MoonPlugin moonPlugin = MoonPlugin.getPlugin(MoonPlugin.class);
 
-    private final TagElement tagElement = this.plugin
+    private final TagElement tagElement = this.moonPlugin
             .getElementHandler()
             .findElement(TagElement.class);
 
     @Command(label = "tag", permission = "moon.command.tag")
     public void tag(BukkitCommandExecutor player) {
-        this.plugin.getConfig().getStringList("command.tag.help")
+        this.moonPlugin.getConfig().getStringList("command.tag.help")
                 .forEach(string -> player.sendMessage(CC.translate(string
                         .replace("%star%", MoonConstants.PREFIX))));
     }
@@ -28,9 +28,9 @@ public class TagCommands {
     @Subcommand(parentLabel = "tag", label = "create", permission = "moon.command.tag")
     public void create(BukkitCommandExecutor player, String tag) {
         if (this.tagElement.findTag(tag) != null) {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.already_exists")));
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.already_exists")));
         } else {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.create"))
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.create"))
                     .replace("%star%", MoonConstants.PREFIX)
                     .replace("%tag%", new Tag(tag, System.currentTimeMillis()).getName()));
         }
@@ -41,9 +41,9 @@ public class TagCommands {
         Tag tag = this.tagElement.findTag(tagName);
 
         if (tag == null) {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.doesnt_exist")));
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.doesnt_exist")));
         } else {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.delete"))
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.delete"))
                     .replace("%star%", MoonConstants.PREFIX)
                     .replace("%tag%", tag.getName()));
 
@@ -56,11 +56,11 @@ public class TagCommands {
         Tag tag = this.tagElement.findTag(tagName);
 
         if (tag == null) {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.doesnt_exist")));
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.doesnt_exist")));
         } else {
             tag.setPrefix(prefix);
 
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.prefix"))
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.prefix"))
                     .replace("%star%", MoonConstants.PREFIX)
                     .replace("%tag%", tag.getName())
                     .replace("%prefix%", tag.getPrefix()));
@@ -72,11 +72,11 @@ public class TagCommands {
         Tag tag = this.tagElement.findTag(tagName);
 
         if (tag == null) {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.doesnt_exist")));
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.doesnt_exist")));
         } else {
             tag.addPermission(permission);
 
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.permission.add"))
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.permission.add"))
                     .replace("%star%", MoonConstants.PREFIX)
                     .replace("%tag%", tag.getName())
                     .replace("%permission%", permission));
@@ -88,9 +88,9 @@ public class TagCommands {
         Tag tag = this.tagElement.findTag(tagName);
 
         if (tag == null) {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.doesnt_exist")));
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.doesnt_exist")));
         } else {
-            player.sendMessage(CC.translate(this.plugin.getConfig().getString("command.tag.permission.remove"))
+            player.sendMessage(CC.translate(this.moonPlugin.getConfig().getString("command.tag.permission.remove"))
                     .replace("%star%", MoonConstants.PREFIX)
                     .replace("%tag%", tag.getName())
                     .replace("%permission%", permission));

@@ -3,23 +3,29 @@ package io.github.notaeris.moon.rank;
 import io.github.notaeris.moon.element.Element;
 import io.github.notaeris.moon.profile.Profile;
 import io.github.notaeris.moon.rank.grant.Grant;
+import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RankElement implements Element {
+
+    @Getter private final List<Rank> ranks = new ArrayList<>();
 
     /**
      * Find a {@link Rank} by name
      *
-     * @param name the rank name
-     * @return the rank found
+     * @param rankName the rank name
+     * @return the {@link Rank} retrieved
      */
-    public Rank findRank(String name) {
-        return Rank.getRanks().stream()
-                .filter(rank -> rank.getName().equalsIgnoreCase(name))
+    public Rank findRank(String rankName) {
+        return this.ranks.stream()
+                .filter(rank -> rank.getName().equalsIgnoreCase(rankName))
                 .findFirst().orElse(null);
     }
 
     /**
-     * Get the default rank for a {@link Profile}
+     * Get the default {@link Rank} for a {@link Profile}
      *
      * @param profile the profile
      */
